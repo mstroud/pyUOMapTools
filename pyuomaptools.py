@@ -28,7 +28,7 @@ def radar_color2rgb(rcode):
     Returns a tuple with (R,G,B)
     """
     offset   = 2*rcode # Byte offset into color lookup
-    colorval = struct.unpack_from("H", radar_color_buffer, )
+    colorval = struct.unpack_from("H", radar_color_buffer, offset)
     return ( (( (colorval[0]>>10) & 0x1F ) << 3 ), # 8-bit R
              (( (colorval[0]>>5 ) & 0x1F ) << 3 ), # 8-bit G
              (( (colorval[0]>>0 ) & 0x1F ) << 3 )) # 8-bit B
